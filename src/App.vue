@@ -1,28 +1,31 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+      <div>
+
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+              <h1 class="display-4">Lista de filmes</h1>
+              <p class="lead">Treinando Comunicação entre componentes</p>             
+        </div>
+      </div>
+
+      <div class="container">
+        <FilmesLista/>
+      </div>
+
+ </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+/*IMPORTAÇÃO DO COMPONENTE */
+import FilmesLista from './components/FilmesLista.vue'
 
 export default {
-  name: 'App',
+  /*REGISTRO FEITO LOCALMENTE DENTRO DO APP.VUE*/
   components: {
-    HelloWorld
+    FilmesLista 
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+
