@@ -18,9 +18,9 @@ export default {
     },
     methods:{
         selecionar() {
-                eventBus.$emit('selecionarFilme', this.filme);
-
-       // this.$emit('selecionarFilme', this.filme);
+        // eventBus.$emit('selecionarFilme', this.filme);
+        //this.$emit('selecionarFilme', this.filme);
+        eventBus.selecionarFilme(this.filme)
         }
     }
 }

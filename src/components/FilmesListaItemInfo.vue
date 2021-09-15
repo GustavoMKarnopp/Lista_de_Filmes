@@ -27,7 +27,7 @@ return{
     },
     methods:{
         editar() {
-            this.$$emit('editarFilme', this.filme);
+            this.$emit('editarFilme', this.filme);
         }
     }
 }

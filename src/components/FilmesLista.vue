@@ -20,8 +20,13 @@
 
         <div class="col-4">
             <FilmesListaItemInfo
-             :filme="filmeSelecionado"
-             @editarFilme="editarFilme"/>
+                v-if="!editar"    
+                :filme="filmeSelecionado"
+                @editarFilme="editarFilme"/>
+            <FilmesListaItemEditar
+                v-else
+                :filme="filmeSelecionado"
+            />
         </div>
     </div>
 </template>
@@ -29,11 +34,13 @@
 <script>
 
 import FilmesListaItem from './FilmesListaItem.vue';
+import FilmesListaItemEditar from './FilmesListaItemEditar.vue';
 import FilmesListaItemInfo from './FilmesListaItemInfo.vue';
 
 export default {
     components:{
         FilmesListaItem,
+        FilmesListaItemEditar,
         FilmesListaItemInfo
     },
     data (){
