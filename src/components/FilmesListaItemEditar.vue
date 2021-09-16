@@ -9,6 +9,7 @@
                 class="form-control"
                 placeholder="Inserir título"
                 :value="filmeSelecionado.titulo"
+                @input="filmeSelecionado = {propriedade: 'titulo', valor: $event.target.value}"
                 >
 
             <input 
@@ -16,6 +17,7 @@
                 class="form-control"
                 placeholder="Inserir ano"
                 :value="filmeSelecionado.ano"
+                @input="filmeSelecionado = {propriedade: 'ano', valor: $event.target.value}"
                 >
             
         </div>
