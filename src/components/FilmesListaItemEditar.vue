@@ -8,14 +8,14 @@
                 type="text"
                 class="form-control"
                 placeholder="Inserir título"
-                :value="filme.titulo"
+                :value="filmeSelecionado.titulo"
                 >
 
             <input 
                 type="text"
                 class="form-control"
                 placeholder="Inserir ano"
-                :value="filme.ano"
+                :value="filmeSelecionado.ano"
                 >
             
         </div>
@@ -29,6 +29,26 @@ export default {
             required: true
         }
     },
+    data (){
+        return{
+            filmeLocal :this.filme
+        }
+    },
+    computed:{
+        filmeSelecionado: {
+            set(dados){
+                this.filmeLocal = Object.assign(
+                    {},
+                    this.filmeLocal,
+                    { [dados.propriedade]: dados.valor }
+                )
+            },
+            get(){
+                return this.filme
+            }
+            
+        }
+    }
 }
 </script>scr
 <style>
