@@ -1,11 +1,11 @@
 <template>
     <div class="row">
 
-        <!-- Coluna 01 -->
         <div class="col-8">
             
             <h2>Filmes</h2>
 
+        <!-- Coluna 01 -->
             <ul class="list-group lista-group-flush">
                 <FilmesListaItem
                 :class="aplicarClasseActiva(filme)"
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import {eventBus} from '../main'
 
 import FilmesListaItem from './FilmesListaItem.vue';
 import FilmesListaItemEditar from './FilmesListaItemEditar.vue';
@@ -65,6 +66,11 @@ export default {
             this.editar = true
             this.filmeSelecionado = filme
         }
+    },
+    created() {
+        eventBus.$on('selecionarFilme',(filmeSelecionado) => {
+            this.filmeSelecionado = filmeSelecionado
+        })
     }
 }
 </script>
