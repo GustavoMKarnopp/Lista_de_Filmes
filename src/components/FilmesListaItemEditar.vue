@@ -9,6 +9,7 @@
                 class="form-control"
                 placeholder="Inserir título"
                 :value="filme.titulo"
+                @input="filmeSelecionado = { propriedade: 'titulo', valor: $event.target.value }"
                 >
 
             <input 
@@ -16,9 +17,14 @@
                 class="form-control"
                 placeholder="Inserir ano"
                 :value="filme.ano"
+                @input="filmeSelecionado = { propriedade: 'ano', valor: $event.target.value }"
+
                 >
             
         </div>
+
+            
+
     </div>
 </template>
 <script>
@@ -29,6 +35,25 @@ export default {
             required: true
         }
     },
+    data(){
+        return{
+            filmeLocal: this.filme
+        }
+    }, 
+    computed:{
+        filmeSelecionado:{
+            set(dados){
+                this.filmeLocal = Object.assign(
+                    {},
+                    this.filmeLocal,
+                    { [dados.propriedade] : dados.valor }
+                    )
+            },
+            get(){
+                return this.filme
+            }
+        }
+    }
 }
 </script>scr
 <style>
