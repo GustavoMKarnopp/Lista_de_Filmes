@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import { eventBus } from '../main';
 
 import FilmesListaItem from './FilmesListaItem.vue';
 import FilmesListaItemEditar from './FilmesListaItemEditar.vue';
@@ -64,7 +65,19 @@ export default {
         editarFilme(filme){
             this.editar = true
             this.filmeSelecionado = filme
+        },
+        aatualizarFilme(filmeAtualizado){
+            const indice = this.filmes.findIndex(filme => filme.id === filmeAtualizado.id)
+            this.filmes.splice(indice, 1, filmeAtualizado) // Pego filme select, pelo 'indice' por '1' valor coloco o o novo 'filmeAtualizado'
+            this.filmeSelecionado = undefined//Não tenho mais nenhum filme selecionado
+            this.editar = false//Não estou mais editando nenhum filme
         }
+    },
+    created(){
+        eventBus.$on('selecionarFilme',(filmeSelecionado) => {
+            this.filmeSelecionado = filmeSelecionado
+        }),
+        eventBus.$on('atualizarFilme', this.aatualizarFilme)
     }
 }
 </script>

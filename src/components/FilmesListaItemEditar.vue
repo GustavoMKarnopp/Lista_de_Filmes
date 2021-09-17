@@ -23,11 +23,11 @@
             
         </div>
 
-            
-
+            <button @click="salvarFilme" class="btn btn-primary float-right"> Salvar </button>
     </div>
 </template>
 <script>
+import {eventBus} from '../main'
 export default {
     props: {
         filme: {
@@ -52,8 +52,15 @@ export default {
             get(){
                 return this.filme
             }
+        },
+        
+    },
+    methods:{
+        salvarFilme(){
+        eventBus.atualizarFilme(this.filmeLocal)
         }
     }
+
 }
 </script>scr
 <style>
